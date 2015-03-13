@@ -2,20 +2,14 @@
 
 The **RIVA (Realistic Interactive Virtual Agent)** Project is being developed at the University of California, Irvine (Calit2). The goal of this system is to create a virtual assistant that provides feedback to patients undergoing physical rehabilitation with the [Music Glove](https://www.flintrehabilitation.com/).
 
-The project utilizes USC's [Smartbody](http://smartbody.ict.usc.edu/) system, and is controlled using the Python scripting language through the **VirtualAssistant.py** script. This script relies on output from our [Music Glove Script](https://github.com/Calit2-UCI/MusicGlove).
-
-##### In Progress...
-- [ ] Improve character lighting
-- [ ] Include 3D objects for the environment
-- [ ] Concatenate audio files
-- [ ] Differentiate between positive and negative feedback
-- [ ] Improve character behavior (gestures, expressions)
+The project utilizes USC's [Smartbody](http://smartbody.ict.usc.edu/) system ([Documentation](http://smartbody.ict.usc.edu/HTML/SmartBodyManual.pdf)), and is controlled using the Python scripting language through the **VirtualAssistant.py** script. This script relies on output from our [Music Glove Script](https://github.com/Calit2-UCI/MusicGlove).
 
 ## Contents
 - [How to Run](#how-to-run)
 - [Using with MusicGlove](#using-with-musicglove)
 - [Gazing Coordinates](#gazing-coordinates)
 - [Facial Expression BMLs](#facial-expression-bmls)
+- [In Progress](#in-progress)
 
 ## How to Run
 1. RUN the Music Glove Script
@@ -39,12 +33,20 @@ The project utilizes USC's [Smartbody](http://smartbody.ict.usc.edu/) system, an
 
 ## Facial Expression BMLs
 * Happy:
-  ```
+  ```python
 	bml.execBML('ChrRachel', '<face type="facs" au="6" amount="1"/><face type="facs" au="12" amount="1"/>')
 	```
 * Sad:
-  ```
+  ```python
 	bml.execBML('ChrRachel', '<face type="facs" au="1_left" amount="1"/><face type="facs" au="1_right" amount="1"/> +
       <face type="facs" au="4_left" amount="1"/><face type="facs" au="4_right" amount="1"/> +
       <face type="facs" au="6" amount="0.58"/>')
-	```
+  ```
+
+## In Progress...
+- [ ] Improve character lighting
+- [ ] Include 3D objects for the environment
+- [ ] Concatenate audio files
+- [ ] Differentiate between positive and negative feedback
+- [ ] Improve character behavior (gestures, expressions)
+- [ ] Character movement and speech timing
