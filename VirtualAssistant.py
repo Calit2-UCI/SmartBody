@@ -2,7 +2,7 @@
 #                                                  #
 #                  SmartBody RIVA                  #
 #                                                  #
-# Stephanie Chang - Calit2 Dev Fall 2014           #
+# Stephanie Chang - Calit2 Dev 2014-2015           #
 #   Python 2.7.3                                   #
 ####################################################
 
@@ -14,132 +14,25 @@ print "|--------------------------------------------|"
 print "|        Starting VirtualAssistant           |"
 print "|--------------------------------------------|"
 
-####################################################
-#                                                  #
-#                CHARACTER SET UP                  #
-#                                                  #
-####################################################
+# Setup SmartBody Character
+scene.run('setup-character.py')
 
-# Add asset paths
-scene.addAssetPath('script', 'scripts')
-scene.addAssetPath('mesh', 'mesh')
-scene.addAssetPath('motion', 'ChrRachel')
-scene.addAssetPath('script', 'behaviorsets')
-scene.addAssetPath('audio', 'speech')
-scene.loadAssets()
-
-# Set scene parameters to fit character
-scene.setScale(1.0)
-scene.setBoolAttribute('internalAudio', True)
-scene.run('default-viewer.py')
-camera = getCamera()
-camera.setEye(0.03, 1.59, 1.42)
-camera.setCenter(0.11, 0.88, -0.43)
-camera.setUpVector(SrVec(0, 1, 0))
-camera.setScale(1)
-camera.setFov(1.0472)
-camera.setFarPlane(100)
-camera.setNearPlane(0.1)
-camera.setAspectRatio(0.966897)
-scene.getPawn('camera').setPosition(SrVec(0, -2, 0))
-
-# Set joint map for character
-scene.run('zebra2-map.py')
-zebra2Map = scene.getJointMapManager().getJointMap('zebra2')
-rachelSkeleton = scene.getSkeleton('ChrRachel.sk')
-zebra2Map.applySkeleton(rachelSkeleton)
-zebra2Map.applyMotionRecurse('ChrRachel')
-
-# Establish lip syncing data set
-scene.run('init-diphoneDefault.py')
-
-# Set up character face definition
-rachelFace = scene.createFaceDefinition('ChrRachel')
-rachelFace.setFaceNeutral('ChrRachel@face_neutral')
-rachelFace.setAU(1,  "left",  "ChrRachel@001_inner_brow_raiser_lf")
-rachelFace.setAU(1,  "right", "ChrRachel@001_inner_brow_raiser_rt")
-rachelFace.setAU(2,  "left",  "ChrRachel@002_outer_brow_raiser_lf")
-rachelFace.setAU(2,  "right", "ChrRachel@002_outer_brow_raiser_rt")
-rachelFace.setAU(4,  "left",  "ChrRachel@004_brow_lowerer_lf")
-rachelFace.setAU(4,  "right", "ChrRachel@004_brow_lowerer_rt")
-rachelFace.setAU(5,  "both",  "ChrRachel@005_upper_lid_raiser")
-rachelFace.setAU(6,  "both",  "ChrRachel@006_cheek_raiser")
-rachelFace.setAU(7,  "both",  "ChrRachel@007_lid_tightener")
-rachelFace.setAU(10, "both",  "ChrRachel@010_upper_lip_raiser")
-rachelFace.setAU(12, "left",  "ChrRachel@012_lip_corner_puller_lf")
-rachelFace.setAU(12, "right", "ChrRachel@012_lip_corner_puller_rt")
-rachelFace.setAU(25, "both",  "ChrRachel@025_lips_part")
-rachelFace.setAU(26, "both",  "ChrRachel@026_jaw_drop")
-rachelFace.setAU(45, "left",  "ChrRachel@045_blink_lf")
-rachelFace.setAU(45, "right", "ChrRachel@045_blink_rt")
-
-rachelFace.setViseme("open",    "ChrRachel@open")
-rachelFace.setViseme("W",       "ChrRachel@W")
-rachelFace.setViseme("ShCh",    "ChrRachel@ShCh")
-rachelFace.setViseme("PBM",     "ChrRachel@PBM")
-rachelFace.setViseme("FV",      "ChrRachel@FV")
-rachelFace.setViseme("wide",    "ChrRachel@wide")
-rachelFace.setViseme("tBack",   "ChrRachel@tBack")
-rachelFace.setViseme("tRoof",   "ChrRachel@tRoof")
-rachelFace.setViseme("tTeeth",  "ChrRachel@tTeeth")
-
-rachel = scene.createCharacter('ChrRachel', '')
-rachelSkeleton = scene.createSkeleton('ChrRachel.sk')
-rachel.setSkeleton(rachelSkeleton)
-rachelPos = SrVec(0, 0, 0)
-rachel.setPosition(rachelPos)
-rachel.setHPR(SrVec(0, 0, 0))
-rachel.setFaceDefinition(rachelFace)
-rachel.createStandardControllers()
-
-# Load and turn on deformable mesh and GPU
-rachel.setDoubleAttribute('deformableMeshScale', .01)
-rachel.setStringAttribute('deformableMesh', 'ChrRachel.dae')
-rachel.setStringAttribute("displayType", "GPUmesh")
-
-# Set up diphone lip syncing
-rachel.setStringAttribute('lipSyncSetName', 'default')
-rachel.setBoolAttribute('usePhoneBigram', True)
-
-# Use TTS Relay for voice. Set the voice code
-#rachel.setVoice('remote')
-#rachel.setVoiceCode('Microsoft|Zira|Desktop')
-
-# Use pre-recorded audio files for voice
-rachel.setStringAttribute("voice", "audiofile")
-rachel.setStringAttribute("voiceCode", ".")
-
-# Set saccade mode for character to talk
-bml.execBML('*', '<saccade mode="talk"/>')
-
-# Add pawns in scene for character gaze
-gazeTarget = scene.createPawn('gazeTarget')
-gazeTarget.setPosition(SrVec(4, 1.58, 1.5))		# Set gaze right
-
-# Setup character gestures, body posture, and gaze target
-scene.run('BehaviorSetGestures.py')
-setupBehaviorSet()
-retargetBehaviorSet('ChrRachel')
-bml.execBML('ChrRachel', '<body posture="ChrBrad@Idle01"/>')
-bml.execBML('ChrRachel', '<gaze sbm:joint-range="EYES CHEST" target="gazeTarget"/>')
-
-
-####################################################
-#                                                  #
-#                       MAIN                       #
-#                                                  #
-####################################################
-
+######################################################
+#                                                    #
+#                        MAIN                        #
+#                                                    #
+######################################################
 
 # Open the input file generated from the script
-file_path = r'C:\MusicGlove\musicglove_1366x768\resources\saves\temp\RIVA_log.txt'
+file_path = r'D:\RIVA\musicglove_1366x768\resources\saves\temp\RIVA_log.txt'
+input_file = io.open(file_path, 'r')
 
 # Global variables to control character timing in the Update script
 last = 0
-delay = 5					# Seconds between when script will check MusicGlove CSV for new text
+delay = 5					# Seconds between when script will check Music Glove CSV for new line
 
 move_gaze = False 			# When true, continue moving the gaze
-gaze_direction = 'right'	# Gaze direction defaulted to right
+gaze_direction = 'forward'	# Gaze direction defaulted to right
 gazeX = 4 					# x-coord of gaze
 dirX = 1   					# Value to increment/decrement x-coord of gaze (1 or -1)
 turn_speed = 0.07 			# Speed to turn gaze
@@ -168,7 +61,7 @@ class VirtualAssistant(SBScript):
 		# Responsible for character movements
 		if move_gaze:
 			if gaze_direction == 'right':		# move her towards forward
-				if turn <= 5:					# make this random so she doesn't always turn towards user (Currently 50/50 chance)
+				if turn <= 3:					# make this random so she doesn't always turn towards user (Currently 50/50 chance)
 					if gazeX > forward_gaze:
 						dirX = -1
 					elif gazeX <= forward_gaze:
@@ -196,6 +89,7 @@ class VirtualAssistant(SBScript):
 		if diff >= delay:
 			with io.open(file_path, 'r') as f:
 				line = f.readline()
+			#input_file = io.open(file_path, 'r')
 			if previous not in line:
 				move_gaze = True
 				line = line.split(":")

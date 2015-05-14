@@ -1,0 +1,53 @@
+Possible combinations for lighting parameters
+Format: rotX, rotY, rotZ
+CODE: light0.setHPR(SrVec(rotY, rotX, rotZ))
+CURRENT SETTINGS:
+
+    light0
+        49.2828
+        157.479
+        -156.542
+
+    light1
+        -54.7715
+        106.068
+        -105.279
+
+    light2
+        -34.4736
+        179.825
+        175.913
+
+------
+
+light0
+    rotX -37.6404
+    rotY -8.83454
+    rotZ 76.3028
+
+light1
+    rotX -19.3685
+    rotY -18.448
+    rotZ -53.7378
+
+light2
+    rotX -5.414
+    rotY 45.1394
+    rotZ -177.17
+
+------
+
+light0
+    -50.7532
+    -19.3016
+    12.7313
+
+light1
+    -26.2218
+    169.365
+    144.303
+
+light2
+    2.41359
+    119.441
+    175.846

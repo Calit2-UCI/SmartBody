@@ -5,11 +5,16 @@ The **RIVA (Realistic Interactive Virtual Agent)** Project is being developed at
 The project utilizes USC's [Smartbody](http://smartbody.ict.usc.edu/) system ([Documentation](http://smartbody.ict.usc.edu/HTML/SmartBodyManual.pdf)), and is controlled using the Python scripting language through the **VirtualAssistant.py** script. This script relies on output from our [Music Glove Script](https://github.com/Calit2-UCI/MusicGlove).
 
 ## Contents
+- [File Structure](#file-structure)
 - [How to Run](#how-to-run)
 - [Using with MusicGlove](#using-with-musicglove)
 - [Gazing Coordinates](#gazing-coordinates)
 - [Facial Expression BMLs](#facial-expression-bmls)
 - [In Progress](#in-progress)
+
+## File Structure
+* Files in 'Scripts' should be placed in "__SmartBodySVN\data\scripts__"
+* Main program in VirtualAssistant.py
 
 ## How to Run
 1. RUN the Music Glove Script
