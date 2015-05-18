@@ -14,8 +14,21 @@ print "|--------------------------------------------|"
 print "|        Starting VirtualAssistant           |"
 print "|--------------------------------------------|"
 
+# Add asset paths
+scene.addAssetPath('script', 'scripts')
+scene.addAssetPath('mesh', 'mesh')
+scene.addAssetPath('motion', 'ChrRachel')
+scene.addAssetPath('script', 'behaviorsets')
+scene.addAssetPath('audio', 'speech')
+scene.loadAssets()
+
 # Setup SmartBody Character
 scene.run('setup-character.py')
+
+# Add pawns in scene for character gaze
+gazeTarget = scene.createPawn('gazeTarget')
+gazeTarget.setPosition(SrVec(0.03, 1.58, 1.5))		# set right
+bml.execBML('ChrRachel', '<gaze sbm:joint-range="EYES CHEST" target="gazeTarget"/>')
 
 ######################################################
 #                                                    #

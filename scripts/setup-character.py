@@ -1,11 +1,3 @@
-# Add asset paths
-scene.addAssetPath('script', 'scripts')
-scene.addAssetPath('mesh', 'mesh')
-scene.addAssetPath('motion', 'ChrRachel')
-scene.addAssetPath('script', 'behaviorsets')
-scene.addAssetPath('audio', 'speech')
-scene.loadAssets()
-
 # Set scene parameters to fit character
 scene.setScale(1.0)
 scene.setBoolAttribute('internalAudio', True)
@@ -54,13 +46,8 @@ rachel.setStringAttribute("voiceCode", ".")
 # Set saccade mode for character to talk
 bml.execBML('*', '<saccade mode="talk"/>')
 
-# Add pawns in scene for character gaze
-gazeTarget = scene.createPawn('gazeTarget')
-gazeTarget.setPosition(SrVec(0.03, 1.58, 1.5))		# set right
-
 # Setup character gestures, body posture, and gaze target
 scene.run('BehaviorSetGestures.py')
 setupBehaviorSet()
 retargetBehaviorSet('ChrRachel')
 bml.execBML('ChrRachel', '<body posture="ChrBrad@Idle01"/>')
-bml.execBML('ChrRachel', '<gaze sbm:joint-range="EYES CHEST" target="gazeTarget"/>')
