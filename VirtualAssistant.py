@@ -26,6 +26,7 @@ scene.addAssetPath('mesh', 'mesh')
 scene.addAssetPath('motion', 'ChrRachel')
 scene.addAssetPath('script', 'behaviorsets')
 scene.addAssetPath('audio', 'speech')
+scene.addAssetPath('script', 'MusicGlove')
 scene.loadAssets()
 
 # Setup SmartBody Character
@@ -41,8 +42,6 @@ bml.execBML('ChrRachel', '<gaze sbm:joint-range="EYES CHEST" target="gazeTarget"
 #                        MAIN                        #
 #                                                    #
 ######################################################
-
-# Call MusicGlove Script
 
 # Open the input file generated from the script
 file_path = r'D:\RIVA\musicglove_1366x768\resources\saves\temp\RIVA_log.txt'
@@ -119,7 +118,7 @@ class VirtualAssistant(SBScript):
 	def update(self, time):
 
 		diff = time - self.last
-		print diff
+		#print diff
 
 		# Responsible for character movements
 		if self.move_gaze:
@@ -170,3 +169,6 @@ class VirtualAssistant(SBScript):
 # START THE PROGRAM -> RUN THE UPDATE SCRIPT
 virtualassistant = VirtualAssistant()
 scene.addScript('virtualassistant', virtualassistant)
+
+# Call MusicGlove Script
+scene.run('RIVA_Main.py')

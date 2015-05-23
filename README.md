@@ -13,7 +13,8 @@ The project utilizes USC's [Smartbody](http://smartbody.ict.usc.edu/) system ([D
 - [In Progress](#in-progress)
 
 ## File Structure
-* Files in 'Scripts' should be placed in "__SmartBodySVN\data\scripts__"
+* Files in 'scripts' should be placed in "__SmartBodySVN\data\scripts"
+* Files in 'MusicGlove' should be placed in "__SmartBodySVN\data\MusicGlove"
 * Main program in VirtualAssistant.py
 
 ## How to Run
