@@ -9,6 +9,7 @@
 import io
 import time as systime
 from random import randrange
+from threading import Thread
 
 print "|--------------------------------------------|"
 print "|        Starting VirtualAssistant           |"
@@ -148,14 +149,17 @@ class VirtualAssistant(SBScript):
 				gazeTarget.setPosition(SrVec(self.gazeX, 1.58, 1.5))
 
 		if self.introduction:
-			self.delay = 20
+			self.delay = 15      # delay before talking when first starting the script
 			wav = self.read_csv()
 		else:
 			self.delay = 5
 
 		# Check if CSV file has new line of output to speak. If not, do not do anything.
 		if diff >= self.delay:
-			self.introduction = False
+                        if self.introduction:
+                                self.speak_wav(wav)
+                                self.introduction = False
+
 			wav = self.read_csv()
 
 			if wav != self.previous_wav:
@@ -165,10 +169,14 @@ class VirtualAssistant(SBScript):
 				self.last = time
 				self.previous_wav = wav
 
+def songLoop():
+        scene.run('RIVA_Main.py')
+
+# Call MusicGlove Script on a separate thread
+thread = Thread(target = songLoop)
+thread.daemon = True            # Kill thread when the main thread dies
+thread.start()
 
 # START THE PROGRAM -> RUN THE UPDATE SCRIPT
 virtualassistant = VirtualAssistant()
 scene.addScript('virtualassistant', virtualassistant)
-
-# Call MusicGlove Script
-scene.run('RIVA_Main.py')
