@@ -71,7 +71,7 @@ class VirtualAssistant(SBScript):
 								# Will always turn towards the user on the first go, as it is set to 0 and the condition
 									# is turn <= 5
 
-	previous_wav = 'Welcome_str'
+	previous_wav = ''
 
 	def speak_wav(self, response):
 		'''
@@ -156,18 +156,18 @@ class VirtualAssistant(SBScript):
 
 		# Check if CSV file has new line of output to speak. If not, do not do anything.
 		if diff >= self.delay:
-                        if self.introduction:
-                                self.speak_wav(wav)
-                                self.introduction = False
+            if self.introduction:
+                self.speak_wav(wav)
+                self.introduction = False
+			else:
+				wav = self.read_csv()
 
-			wav = self.read_csv()
-
-			if wav != self.previous_wav:
-				self.move_gaze = True
-				self.speak_wav(wav)
-				self.gesture()
-				self.last = time
-				self.previous_wav = wav
+				if wav != self.previous_wav and wav != '':
+					self.move_gaze = True
+					self.speak_wav(wav)
+					self.gesture()
+					self.last = time
+					self.previous_wav = wav
 
 def songLoop():
         scene.run('RIVA_Main.py')
