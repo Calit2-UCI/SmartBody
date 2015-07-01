@@ -14,7 +14,7 @@ from collections import namedtuple
 Difference = namedtuple('Difference', 'red blue green purple yellow')
 
 class User_Stats:
-    def __init__(self, neg_quart=25, pos_quart=25, new_song=True):
+    def __init__(self, neg_quart=25, pos_quart=25, new_song=False):
         self.negative_quartile_range = neg_quart
         self.positive_quartile_range = pos_quart
         self._old_red_avg = 0
@@ -144,8 +144,8 @@ class User_Stats:
         IQR = self.quartiles(sortedList)
         minimum = sortedList[0]
         maximum = sortedList[len(sortedList)-1]
-        #print('In get_scale_points(), Minimum = {} Q1 = {} Q2 = {} Maximum = {}'.format(minimum,IQR[0],
-        #                                                                                IQR[1], maximum))
+        print('In get_scale_points(), Minimum = {} Q1 = {} Q2 = {} Maximum = {}'.format(minimum,IQR[0],
+                                                                                        IQR[1], maximum))
         pointsList = [minimum, IQR[0], IQR[1], maximum]
         return pointsList
 

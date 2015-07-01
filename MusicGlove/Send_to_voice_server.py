@@ -26,7 +26,7 @@ def text_to_RIVA(*args):
             RIVA_message += msg
         else:
             RIVA_message += ";" + msg
-    #print(RIVA_message)
+    print(RIVA_message)
     with open(RIVA_LOG, 'w') as outfile:
         outfile.write(RIVA_message)
 

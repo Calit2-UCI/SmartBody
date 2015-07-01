@@ -1,6 +1,9 @@
 __author__ = 'Nathan'
+__editor__ = 'Jessica'
 ### Nathanial Benjamin, UCI, Calit2, CalPlug, 2014-Feb
 # Written in Python 3.3.3 (added statistics and pydub modules)
+### JessicaZeng, UCI, Cali2, CalPlug,2015-May
+# Edied in Python 2.7
 
 
 import csv
@@ -8,7 +11,7 @@ from time import strftime
 
 ### The file where user grip data for current song is stored
 #MUSICGLOVE = 'Z:\\musicglove\\resources\\saves\\temp\\temp.csv'                                         # CalPlug server
-MUSICGLOVE = 'D:\\RIVA\\musicglove_1366x768\\resources\\saves\\temp\\temp.csv' # Local Computer
+MUSICGLOVE = 'Z:\\resources\\saves\\temp\\temp.csv' # Local Computer
 
 ### Sets a unique timestamped filename, in the summaries directory, for the stats of the current song
 #M_GLOVE_SUMMARIES = "Z:\\musicglove\\summaries\\"                                     # CalPlug server

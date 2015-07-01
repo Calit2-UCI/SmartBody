@@ -1,6 +1,10 @@
 __author__ = 'Nathan'
+__editor__ = 'Jessica'
 ### Nathanial Benjamin, UCI, Calit2, CalPlug, 2014-Feb
 # Written in Python 3.3.3 (added statistics and pydub modules)
+
+###Jessica Zeng, UCI, Cali2, CalPlug, 2015-May
+# Edited in Python 2.7
 
 ### The MusicGlove interface: evaluates a csv file's data and converts that data into statistics telling how well the
 ###    user is preforming, then returns a string giving encouragement and advice.
