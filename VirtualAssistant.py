@@ -50,7 +50,7 @@ file_path = r'D:\RIVA\musicglove_1366x768\resources\saves\temp\RIVA_log.txt'
 input_file = io.open(file_path, 'r')
 
 # Default x-coord gaze values
-forward_gaze = 0.04
+forward_gaze = 0
 right_gaze = 4
 left_gaze = -4
 
@@ -66,12 +66,12 @@ class VirtualAssistant(SBScript):
 	gaze_direction = 'right'		# Gaze direction defaulted towards the right
 	gazeX = forward_gaze			# x-coord of gaze
 	dirX = 1  						# Value to increment/decrement x-coord of gaze (1 or -1)
-	turn_speed = 0.07 				# Speed to turn gaze
+	turn_speed = 0.07				# Speed to turn gaze
 
 	end = 0 						# Time before turning back away from the user
 	turn = 0 						# Randomly determines whether or not to turn towards the user when speaking
 									# Will always turn towards the user at first, as the condition is turn <= 5
-	previous_wav = 'Welcome_str'	# Keep track of previously spoken wav file name
+	previous_wav = ''	# Keep track of previously spoken wav file name
 	wav_duration = 7            	# Duration of Welcome_str
 
 	def speak_wav(self, response):
@@ -113,6 +113,7 @@ class VirtualAssistant(SBScript):
             wav = str(line[-1])
             wav_file = 'D:\\RIVA\\SmartBody\\data\\speech\\'
             if wav != '':
+                self.move_allowed = True
                 with contextlib.closing(wave.open(wav_file + wav + '.wav', 'r')) as f:
                     self.wav_duration = f.getnframes() / float(f.getframerate())
                     return wav
@@ -154,7 +155,7 @@ class VirtualAssistant(SBScript):
 
             diff = time - self.last
 
-            self.move_character(time)
+            self.move_character(time)         
 
             if self.introduction:
                     self.delay = 15
