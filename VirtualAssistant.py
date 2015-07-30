@@ -46,7 +46,7 @@ bml.execBML('ChrRachel', '<gaze sbm:joint-range="EYES CHEST" target="gazeTarget"
 ######################################################
 
 # Open the input file generated from the script
-file_path = r'D:\RIVA\musicglove_1366x768\resources\saves\temp\RIVA_log.txt'
+file_path = r'C:\Users\Stephanie\Desktop\RIVA\Log\RIVA_log.txt'
 input_file = io.open(file_path, 'r')
 
 # Default x-coord gaze values
@@ -111,7 +111,7 @@ class VirtualAssistant(SBScript):
                     line = f.readline()
             line = line.split(":")
             wav = str(line[-1])
-            wav_file = 'D:\\RIVA\\SmartBody\\data\\speech\\'
+            wav_file = 'C:\\Users\\Stephanie\\Desktop\\RIVA\\SmartBody\\data\\speech\\'
             if wav != '':
                 self.move_allowed = True
                 with contextlib.closing(wave.open(wav_file + wav + '.wav', 'r')) as f:
@@ -155,7 +155,7 @@ class VirtualAssistant(SBScript):
 
             diff = time - self.last
 
-            self.move_character(time)         
+            self.move_character(time)
 
             if self.introduction:
                     self.delay = 15

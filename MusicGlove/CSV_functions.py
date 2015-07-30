@@ -10,12 +10,12 @@ import csv
 from time import strftime
 
 ### The file where user grip data for current song is stored
-#MUSICGLOVE = 'Z:\\musicglove\\resources\\saves\\temp\\temp.csv'                                         # CalPlug server
-MUSICGLOVE = 'Z:\\resources\\saves\\temp\\temp.csv' # Local Computer
+MUSICGLOVE = 'R:\\resources\\saves\\temp\\temp.csv'                                         # CalPlug server
+#MUSICGLOVE = 'Z:\\resources\\saves\\temp\\temp.csv' # Local Computer
 
 ### Sets a unique timestamped filename, in the summaries directory, for the stats of the current song
-#M_GLOVE_SUMMARIES = "Z:\\musicglove\\summaries\\"                                     # CalPlug server
-M_GLOVE_SUMMARIES = "D:\\RIVA\\musicglove_1366x768\\summaries\\" # Local Computer
+M_GLOVE_SUMMARIES = "R:\\summaries\\"                                     # CalPlug server
+#M_GLOVE_SUMMARIES = "D:\\RIVA\\musicglove_1366x768\\summaries\\" # Local Computer
 TIMESTAMP = strftime("%a,%d_%b_%Y_%H;%M;%S")
 def current_time():
     return strftime("%a,%d_%b_%Y_%H;%M;%S")

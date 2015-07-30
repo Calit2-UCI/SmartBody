@@ -6,7 +6,7 @@ __author__ = 'Nathan'
 
 
 ### RIVA log file
-RIVA_LOG = "D:\\RIVA\\musicglove_1366x768\\resources\\saves\\temp\\RIVA_log.txt"
+RIVA_LOG = "C:\\Users\\Stephanie\\Desktop\\RIVA\\Log\\RIVA_log.txt"
 NO_VOICE_LOG = "D:\\RIVA\\musicglove_1366x768\\resources\\saves\\temp\\NORIVA_log.txt"         # (local computer)
 
 

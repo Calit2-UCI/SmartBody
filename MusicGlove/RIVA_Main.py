@@ -13,7 +13,7 @@ __author__ = 'Nathan'
 #                                                    #
 ######################################################
 import sys
-sys.path.append("D:\RIVA\Smartbody\data\MusicGlove")
+sys.path.append("C:\Users\Stephanie\Desktop\RIVA\SmartBody\data\MusicGlove")
 
 import CSV_functions
 import Mglove_str_gen
@@ -29,7 +29,7 @@ from user_stats import User_Stats
     -Fix selector to prioritize training prompts
 '''
 SONG_OVER_CHECK_TIME = 10
-TIME_BETWEEN_FEEDBACK = 30        # Must be a multiple of SONG_OVER_CHECK_TIME
+TIME_BETWEEN_FEEDBACK = 20        # Must be a multiple of SONG_OVER_CHECK_TIME
 
 
 class MusicGloveSong:
